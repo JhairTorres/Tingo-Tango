@@ -36,8 +36,6 @@ public class QuestionService {
         }
     }
 
-
-
     public String addNewQuestion(Question newQuestion){
         questions.addQuestion(newQuestion);
         return "Adicionado";

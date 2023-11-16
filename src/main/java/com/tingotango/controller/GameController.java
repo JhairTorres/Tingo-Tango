@@ -108,11 +108,11 @@ public class GameController {
                 tingoTangoService.addKidToEnd(kid),null),HttpStatus.OK);
     }
 
-    @GetMapping(path = "/rolegame")
-    public ResponseEntity<ResponseDTO> roleGame(){
+    @GetMapping(path = "/rolegame/{direction}")
+    public ResponseEntity<ResponseDTO> roleGame(@PathVariable String direction){
         try {
             return new ResponseEntity<>(new ResponseDTO(HttpStatus.OK.value(),
-                    tingoTangoService.roleGame(),null),HttpStatus.OK);
+                    tingoTangoService.roleGame(direction),null),HttpStatus.OK);
         } catch (GameExceptions e) {
             List<String> errors = new ArrayList<>();
             errors.add(e.getMessage());
@@ -153,4 +153,3 @@ public class GameController {
         }
     }
 }
-

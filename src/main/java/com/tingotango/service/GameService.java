@@ -29,13 +29,12 @@ public class GameService {
                 null,null,null);
     }
 
-
     public String addNewQuestion (Question newQuestion){
         questionService.addNewQuestion(newQuestion);
         return "Pregunta adicionada";
     }
 
-    public String deleteQuestionById(String questionId) throws GameExceptions {
+    public String deleteQuestionById(String questionId) throws GameExceptions{
         if(!game.isGameState()){
             try {
                 return questionService.deleteQuestionById(questionId);
@@ -48,7 +47,7 @@ public class GameService {
         }
     }
 
-    public String updateQuestionById(String questionId,Question updQuestion)throws GameExceptions {
+    public String updateQuestionById(String questionId,Question updQuestion)throws GameExceptions{
         if (!game.isGameState()) {
             try {
                 return questionService.updateQuestion(questionId, updQuestion);
@@ -115,8 +114,13 @@ public class GameService {
         }
     }
 
-    public StructureDTO roleGame() throws GameExceptions{
-        if(game.getAwaitingKid()==null) {
+    public StructureDTO roleGame(String direction) throws GameExceptions{
+        if(listDEService.getKids().getSize()==1){
+            game.setGameState(false);
+            throw new GameExceptions("El juego termino puesto que solo hay un participante"+ game.getAwaitingNode().getData().getName()+"Gano el juego");
+        }
+
+        else if(game.getAwaitingKid()==null) {
             Random rand = new Random();
             int randomPosition = rand.nextInt(2000);
             int actualKidPosition = randomPosition % listDEService.getKids().getSize();
@@ -129,7 +133,12 @@ public class GameService {
                 temp = game.getAwaitingNode();
             }
             while (actualKidPosition > 0) {
-                temp = temp.getNext();
+                if(direction.equals("r")){
+                    temp = temp.getNext();
+                }
+                else if(direction.equals("l")){
+                    temp = temp.getPrevious();
+                }
                 actualKidPosition--;
             }
             Question question = questionService.getAll().get(actualQuestionPos);
@@ -154,7 +163,11 @@ public class GameService {
     }
 
     public String answerQuestion(StructureDTO response)throws GameExceptions{
-        if(response.getKidData().getId().equals(game.getAwaitingQuestion().getKidData().getId())){
+
+        if (game.getAwaitingQuestion()==null){
+            throw new GameExceptions("No hay una pregunta por responder");
+        }
+        else if(response.getKidData().getId().equals(game.getAwaitingQuestion().getKidData().getId())){
 
             Question question = null;
             try {
@@ -166,7 +179,9 @@ public class GameService {
             if(question.getCorrectPos().equals(response.getQuestionData().getCorrectPos())){
                 game.setAnswerState(false);
                 game.setAwaitingKid(null);
-                return "Respuesta correcta, continua"+ game.getAwaitingQuestion().getKidData().getName();
+                String name = game.getAwaitingQuestion().getKidData().getName();
+                game.setAwaitingQuestion(null);
+                return "Respuesta correcta, continua " + name;
             }
             else {
                 //Change parameters
@@ -174,7 +189,8 @@ public class GameService {
                 game.setAnswerState(false);
                 listDEService.getKids().deleteById(game.getAwaitingKid().getId());
                 game.setAwaitingKid(null);
-                return "Jugador eliminado continua"+game.getAwaitingNode().getData().getName();
+                game.setAwaitingQuestion(null);
+                return "Jugador eliminado continua " +game.getAwaitingNode().getData().getName();
             }
         }
         else{
@@ -183,4 +199,3 @@ public class GameService {
     }
 
 }
-
