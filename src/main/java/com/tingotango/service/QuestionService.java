@@ -13,18 +13,7 @@ import java.util.List;
 public class QuestionService {
     private ListQuestion questions;
 
-    public QuestionService(){
-        questions = new ListQuestion();
-        // falta leer de archivo preguntas de un txt o de una db
-        questions.addQuestion(new Question("What is the capital of France?",
-                Arrays.asList("Paris", "London", "Berlin", "Madrid"), (byte) 0, "q1"));
-        questions.addQuestion(new Question("What is the capital of England?",
-                Arrays.asList("Paris", "London", "Berlin", "Madrid"), (byte) 1, "q2"));
-        questions.addQuestion(new Question("What is the capital of Germany?",
-                Arrays.asList("Paris", "London", "Berlin", "Madrid"), (byte) 2, "q3"));
-        questions.addQuestion(new Question("What is the capital of Spain?",
-                Arrays.asList("Paris", "London", "Berlin", "Madrid"), (byte) 3, "q4"));
-    }
+
 
     public String addNewQuestion(Question newQuestion){
         questions.addQuestion(newQuestion);

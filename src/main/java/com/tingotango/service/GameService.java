@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Random;
-
+import java.io.*;
 @Data
 @Service
 public class GameService {
@@ -29,6 +29,7 @@ public class GameService {
                 null,null,null);
     }
 
+
     public String addNewQuestion (Question newQuestion){
         questionService.addNewQuestion(newQuestion);
         return "Pregunta adicionada";
@@ -38,8 +39,8 @@ public class GameService {
         if(!game.isGameState()){
             try {
                 return questionService.deleteQuestionById(questionId);
-            } catch (GameExceptions e) {
-                throw new GameExceptions(e.getMessage());
+            } catch (Exception e) {
+                throw new RuntimeException(e);
             }
         }
         else{
@@ -51,8 +52,8 @@ public class GameService {
         if (!game.isGameState()) {
             try {
                 return questionService.updateQuestion(questionId, updQuestion);
-            } catch (GameExceptions e) {
-                throw new GameExceptions(e.getMessage());
+            } catch (Exception e) {
+                throw new RuntimeException(e);
             }
         } else {
             throw new GameExceptions("No se puede actualizar una pregutna con el juego en curso");
@@ -66,8 +67,8 @@ public class GameService {
     public Question getQuestionById(String questionId) throws GameExceptions{
         try {
             return questionService.getQuestionById(questionId);
-        } catch (GameExceptions e) {
-            throw new GameExceptions(e.getMessage());
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
     }
 
@@ -155,7 +156,12 @@ public class GameService {
     public String answerQuestion(StructureDTO response)throws GameExceptions{
         if(response.getKidData().getId().equals(game.getAwaitingQuestion().getKidData().getId())){
 
-            Question question = questionService.getQuestionById(response.getQuestionData().getId());
+            Question question = null;
+            try {
+                question = questionService.getQuestionById(response.getQuestionData().getId());
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
 
             if(question.getCorrectPos().equals(response.getQuestionData().getCorrectPos())){
                 game.setAnswerState(false);

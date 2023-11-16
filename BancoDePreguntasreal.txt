@@ -1,0 +1,12 @@
+1.¿Cual es la capital de Colombia?|bogota,cali,san andres|0|q1
+2.¿En que año se fundo google?|1996,1998,2000|1|q2
+3.¿Quien gano el mundial de futbol del 98?|Argentina,Francia,España|1|q3
+4.¿Cual es el lenguaje de programacion mas usado?|JavaScript,Python,C++|0|q4
+5.¿Cual es el mejor jugador de lol?|Keria,Ruler,Faker|2|q5
+6.¿Cual es el pais mas pequeño del mundo?|Vaticano,San marino,Monaco|0|q6
+7.¿Cual es el rio mas largo?|Amazonas,Nilo,Cauca|0|q7
+8.¿En que año se fundo pokemon go?|2012,2017,2016|2|q8	
+9.¿Quien escribio Attack on Titan?|Eiichiro Oda,Hajime Isayama,Yoshihiro Togashi|1|q9	
+10. ¿Qué es el one piece?|La amistad,Joyas y dinero,Aun no se sabe|2|q10	
+11.¿Cuando fue la segunda guerra mundial?|1950,1939,1910|2|q11	
+12.¿Quien escribio 100 años de soledad?|Gabriel Garcia Marquez,Jorge Isaac,Rafael Pombo|0|	

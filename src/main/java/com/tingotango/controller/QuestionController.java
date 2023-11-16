@@ -28,11 +28,8 @@ public class QuestionController {
         try {
             return new ResponseEntity<>(new ResponseDTO(HttpStatus.OK.value(),
                     questionListService.getQuestionById(questionid),null),HttpStatus.OK);
-        } catch (GameExceptions e) {
-            List<String> errors = new ArrayList<>();
-            errors.add(e.getMessage());
-            return new ResponseEntity<>(new ResponseDTO(HttpStatus.BAD_REQUEST.value(),
-                    null,errors),HttpStatus.OK);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
     }
     @PutMapping(path = "/updatequestion/{questionid}")
@@ -40,11 +37,8 @@ public class QuestionController {
         try {
             return new ResponseEntity<>(new ResponseDTO(HttpStatus.OK.value(),
                     questionListService.updateQuestion(questionid,updatedQuestion),null),HttpStatus.OK);
-        } catch (GameExceptions e) {
-            List<String> errors = new ArrayList<>();
-            errors.add(e.getMessage());
-            return new ResponseEntity<>(new ResponseDTO(HttpStatus.BAD_REQUEST.value(),
-                    null,errors),HttpStatus.OK);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
     }
     @DeleteMapping(path = "/deletequestionbyid/{questionid}")
@@ -52,11 +46,8 @@ public class QuestionController {
         try {
             return new ResponseEntity<>(new ResponseDTO(HttpStatus.OK.value(),
                     questionListService.deleteQuestionById(questionid),null),HttpStatus.OK);
-        } catch (GameExceptions e) {
-            List<String> errors = new ArrayList<>();
-            errors.add(e.getMessage());
-            return new ResponseEntity<>(new ResponseDTO(HttpStatus.BAD_REQUEST.value(),
-                    null,errors),HttpStatus.OK);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
     }
     @PostMapping(path = "/addquestion")
