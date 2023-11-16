@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping(path = "questionlist")
+@RequestMapping(path = "/questionlist")
 public class QuestionController {
     @Autowired
     private QuestionService questionListService;
