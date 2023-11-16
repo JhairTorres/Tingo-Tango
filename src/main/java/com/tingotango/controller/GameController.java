@@ -98,14 +98,28 @@ public class GameController {
 
     @PostMapping(path = "/addkidtostart")
     public ResponseEntity<ResponseDTO> addToStart (@RequestBody Kid kid){
-        return new ResponseEntity<>(new ResponseDTO(HttpStatus.OK.value(),
-                tingoTangoService.addToStart(kid),null),HttpStatus.OK);
+        try {
+            return new ResponseEntity<>(new ResponseDTO(HttpStatus.OK.value(),
+                    tingoTangoService.addToStart(kid),null),HttpStatus.OK);
+        } catch (GameExceptions e) {
+            List<String> errors = new ArrayList<>();
+            errors.add(e.getMessage());
+            return new ResponseEntity<>(new ResponseDTO(HttpStatus.BAD_REQUEST.value(),
+                    null,errors),HttpStatus.OK);
+        }
     }
 
     @PostMapping(path = "/addkidtoend")
     public ResponseEntity<ResponseDTO> addToEnd(@RequestBody Kid kid){
-        return new ResponseEntity<>(new ResponseDTO(HttpStatus.OK.value(),
-                tingoTangoService.addKidToEnd(kid),null),HttpStatus.OK);
+        try {
+            return new ResponseEntity<>(new ResponseDTO(HttpStatus.OK.value(),
+                    tingoTangoService.addKidToEnd(kid),null),HttpStatus.OK);
+        } catch (GameExceptions e) {
+            List<String> errors = new ArrayList<>();
+            errors.add(e.getMessage());
+            return new ResponseEntity<>(new ResponseDTO(HttpStatus.BAD_REQUEST.value(),
+                    null,errors),HttpStatus.OK);
+        }
     }
 
     @GetMapping(path = "/rolegame/{direction}")
@@ -126,7 +140,7 @@ public class GameController {
                 tingoTangoService.getQuestion(),null),HttpStatus.OK);
     }
 
-    @GetMapping(path = "/answerquestion")
+    @PostMapping(path = "/answerquestion")
     public ResponseEntity<ResponseDTO> answerQuestion(@RequestBody StructureDTO response){
 
         try {

@@ -5,8 +5,7 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class Kid {
+public class City {
     private String name;
-    private String id;
-    private City kidCity;
+    private String cityId;
 }

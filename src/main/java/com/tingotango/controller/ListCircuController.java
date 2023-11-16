@@ -31,19 +31,26 @@ public class ListCircuController {
     }
     @PostMapping(path = "/insertinpos/{pos}")
     public ResponseEntity<ResponseDTO> insertInPos(@PathVariable int pos, @RequestBody Kid kid){
-        return new ResponseEntity<>(new ResponseDTO(HttpStatus.OK.value(),
-                listDECircularService.insertInPos(pos,kid),null),HttpStatus.OK);
-    }
-    @DeleteMapping(path="/deleteinpos/{pos}")
-    public ResponseEntity<ResponseDTO> deleteInPos(@PathVariable int pos) {
         try {
             return new ResponseEntity<>(new ResponseDTO(HttpStatus.OK.value(),
-                    listDECircularService.deleteInPos(pos), null), HttpStatus.OK);
+                    listDECircularService.insertInPos(pos,kid),null),HttpStatus.OK);
         } catch (GameExceptions e) {
             List<String> errors = new ArrayList<>();
             errors.add(e.getMessage());
             return new ResponseEntity<>(new ResponseDTO(HttpStatus.BAD_REQUEST.value(),
-                    null, errors), HttpStatus.OK);
+                    null,errors),HttpStatus.OK);
+        }
+    }
+    @DeleteMapping(path="/deleteinpos/{pos}")
+    public ResponseEntity<ResponseDTO> deleteInPos(@PathVariable int pos){
+        try {
+            return new ResponseEntity<>(new ResponseDTO(HttpStatus.OK.value(),
+                    listDECircularService.deleteInPos(pos),null),HttpStatus.OK);
+        } catch (GameExceptions e) {
+            List<String> errors = new ArrayList<>();
+            errors.add(e.getMessage());
+            return new ResponseEntity<>(new ResponseDTO(HttpStatus.BAD_REQUEST.value(),
+                    null,errors),HttpStatus.OK);
         }
     }
     @GetMapping(path = "/movekid/{pos}/{kidid}")

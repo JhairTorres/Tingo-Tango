@@ -47,7 +47,7 @@ public class GameService {
         }
     }
 
-    public String updateQuestionById(String questionId,Question updQuestion)throws GameExceptions{
+    public String updateQuestionById(String questionId,Question updQuestion)throws GameExceptions {
         if (!game.isGameState()) {
             try {
                 return questionService.updateQuestion(questionId, updQuestion);
@@ -71,12 +71,20 @@ public class GameService {
         }
     }
 
-    public String addKidToEnd (Kid kid){
-        return listDEService.addToEnd(kid);
+    public String addKidToEnd (Kid kid) throws GameExceptions{
+        try {
+            return listDEService.addToEnd(kid);
+        } catch (Exception e) {
+            throw new GameExceptions(e.getMessage());
+        }
     }
 
-    public String addToStart (Kid kid){
-        return listDEService.addToStart(kid);
+    public String addToStart (Kid kid) throws GameExceptions{
+        try {
+            return listDEService.addToStart(kid);
+        } catch (Exception e) {
+            throw new GameExceptions(e.getMessage());
+        }
     }
 
     public String deleteKidInPos(int pos)throws GameExceptions{
@@ -124,7 +132,6 @@ public class GameService {
             Random rand = new Random();
             int randomPosition = rand.nextInt(2000);
             int actualKidPosition = randomPosition % listDEService.getKids().getSize();
-            int actualQuestionPos = randomPosition % questionService.getAll().size();
 
             NodeDeCircular temp;
             if (game.getAwaitingKid() == null) {
@@ -141,9 +148,16 @@ public class GameService {
                 }
                 actualKidPosition--;
             }
-            Question question = questionService.getAll().get(actualQuestionPos);
+            Question question;
+
+            do {
+                int randomNumb = rand.nextInt(2000);
+                int actualPos = randomNumb % questionService.getAll().size();
+                question = questionService.getAll().get(actualPos);
+            } while (!question.getQuestionCity().equals(temp.getData().getKidCity()));
+
             Question newQuestion = new Question(question.getQuestion(),question.getOptions(),
-                    null,question.getId());
+                    null,question.getId(),question.getQuestionCity());
 
             game.setAnswerState(true);
             game.setAwaitingKid(temp.getData());

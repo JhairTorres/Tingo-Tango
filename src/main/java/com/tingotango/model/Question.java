@@ -12,4 +12,5 @@ public class Question {
     private List<String> options;
     private Byte correctPos;
     private String id;
+    private City questionCity;
 }

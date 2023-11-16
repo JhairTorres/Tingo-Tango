@@ -1,12 +1,12 @@
-¿Cual es la capital de Colombia?|bogota,cali,san andres|0|q1
-¿En que año se fundo google?|1996,1998,2000|1|q2
-¿Quien gano el mundial de futbol del 98?|Argentina,Francia,España|1|q3
-¿Cual es el lenguaje de programacion mas usado?|JavaScript,Python,C++|0|q4
-¿Cual es el mejor jugador de lol?|Keria,Ruler,Faker|2|q5
-¿Cual es el pais mas pequeño del mundo?|Vaticano,San marino,Monaco|0|q6
-¿Cual es el rio mas largo?|Amazonas,Nilo,Cauca|0|q7
-¿En que año se fundo pokemon go?|2012,2017,2016|2|q8	
-¿Quien escribio Attack on Titan?|Eiichiro Oda,Hajime Isayama,Yoshihiro Togashi|1|q9	
-¿Qué es el one piece?|La amistad,Joyas y dinero,Aun no se sabe|2|q10	
-¿Cuando fue la segunda guerra mundial?|1950,1939,1910|2|q11	
-¿Quien escribio 100 años de soledad?|Gabriel Garcia Marquez,Jorge Isaac,Rafael Pombo|0|q12
+Cual es la capital de Colombia?|bogota,cali,san andres|0|q1|Manizales,04
+ En que a o se fundo google?|1996,1998,2000|1|q2|Pitalito,01
+ Quien gano el mundial de futbol del 98?|Argentina,Francia,Espa a|1|q3|Pitalito,01
+ Cual es el lenguaje de programacion mas usado?|JavaScript,Python,C++|0|q4|Manizales,04
+ Cual es el mejor jugador de lol?|Keria,Ruler,Faker|2|q5|Pitalito,01
+ Cual es el pais mas peque o del mundo?|Vaticano,San marino,Monaco|0|q6|Pereira,02
+ Cual es el rio mas largo?|Amazonas,Nilo,Cauca|0|q7|Manizales,04
+ En que a o se fundo pokemon go?|2012,2017,2016|2|q8|Pereira,02
+ Quien escribio Attack on Titan?|Eiichiro Oda,Hajime Isayama,Yoshihiro Togashi|1|q9|Manizales,04	
+ Qu  es el one piece?|La amistad,Joyas y dinero,Aun no se sabe|2|q10|Pereira,02	
+ Cuando fue la segunda guerra mundial?|1950,1939,1910|2|q11|Pitalito,01	
+ Quien escribio 100 a os de soledad?|Gabriel Garcia Marquez,Jorge Isaac,Rafael Pombo|0|q12|Florencia,03
