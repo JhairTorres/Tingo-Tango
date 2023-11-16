@@ -5,8 +5,9 @@ import lombok.Data;
 @Data
 public class NodeDeCircular {
     private Kid data;
+    private NodeDeCircular next;
     private NodeDeCircular previous;
-    private NodeDeCircular Next;
+
     public NodeDeCircular(Kid data) {
         this.data = data;
     }
