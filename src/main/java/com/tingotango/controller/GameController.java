@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping(path="tingotango")
+@RequestMapping(path="/tingotango")
 public class GameController {
     @Autowired
     private GameService tingoTangoService;

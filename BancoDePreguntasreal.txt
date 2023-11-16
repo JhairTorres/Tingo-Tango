@@ -9,4 +9,4 @@
 ¿Quien escribio Attack on Titan?|Eiichiro Oda,Hajime Isayama,Yoshihiro Togashi|1|q9	
 ¿Qué es el one piece?|La amistad,Joyas y dinero,Aun no se sabe|2|q10	
 ¿Cuando fue la segunda guerra mundial?|1950,1939,1910|2|q11	
-¿Quien escribio 100 años de soledad?|Gabriel Garcia Marquez,Jorge Isaac,Rafael Pombo|0|	
+¿Quien escribio 100 años de soledad?|Gabriel Garcia Marquez,Jorge Isaac,Rafael Pombo|0|q12
